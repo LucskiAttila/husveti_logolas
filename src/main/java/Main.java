@@ -8,7 +8,7 @@ public class Main {
     private static Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        //int n=Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[0]);
         final Level VIOLATION = Level.forName("VIOLATION", 150); // szint a karantén szabályok megsértésének naplózásához
         final Level REQUEST = Level.forName("REQUEST", 350); // szint kérelmek naplózásához
         for (int i = 1; i <= 30; i++) {
