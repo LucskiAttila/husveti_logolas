@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <CustomLevels>
+        <CustomLevel name="VIOLATION" intLevel="150" />
+        <CustomLevel name="REQUEST" intLevel="350" />
+    </CustomLevels>
+    <Appenders>
+        <File name="VIOLATION" fileName="győrfi_pál.log" append="false">
+            <Filters>
+                <ThresholdFilter level="VIOLATION"/>
+                <ThresholdFilter level="FATAL" onMatch="Deny" onMismatch="Accept"/>
+            </Filters>
+        </File>
+        <File name="REQUEST" fileName="győrfi_pál2.log" append="false">
+            <Filters>
+                <ThresholdFilter level="REQUEST"/>
+                <ThresholdFilter level="WARN" onMatch="Deny" onMismatch="Accept"/>
+            </Filters>
+        </File>
+        <RollingFile name="RollingFile" fileName="messages.log" filePattern="messages%i.log.zip">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="VIOLATION"/>
+            <AppenderRef ref="REQUEST"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
